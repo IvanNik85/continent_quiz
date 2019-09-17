@@ -1,0 +1,76 @@
+body {
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 5%;
+}
+
+h3 {
+  text-transform: uppercase;
+  color: #6d6d6d;
+  margin: 0;
+}
+
+h1 {
+  color: #6d6d6d;
+  margin: 0 0 20px 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+.home {
+  min-height: 100vh;
+  position: relative;
+}
+
+.home .scoreNumber, .home .play {
+  padding: 15px 18px;
+  border: 2px solid green;
+  border-radius: 10px;
+  background: transparent;
+  color: green;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.home .scoreNumber:focus, .home .play:focus {
+  outline: none;
+}
+
+.home .playDiv {
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
+  bottom: 15%;
+}
+
+.home .playDiv a {
+  text-decoration: none;
+}
+
+.home .playDiv .play {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home .playDiv .play i {
+  padding-right: 10px;
+}
+
+.home .playDiv .play:focus {
+  outline: none;
+}
+
+.home .playDiv .play:hover {
+  color: #fff;
+  background: green;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

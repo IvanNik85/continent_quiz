@@ -1,0 +1,37 @@
+@import "../css/main.scss";
+
+.finishPage {    
+    .centered {
+        text-align: center;
+        h5 {
+            font-size: 60px;
+            margin: 20px;
+        }
+        i {
+            display: block;        
+            font-size: 100px;
+            color: rgb(24, 77, 192);
+        }
+    }
+    a {
+        text-decoration: none;
+    
+        .finishBtn {
+            width: 180px;
+            padding: 15px;
+            color: rgb(24, 77, 192);
+            background: #fff;
+            border: 2px solid rgb(24, 77, 192);
+            border-radius: 10px;
+            font-size: 20px;
+            transition: .2s;
+            display: block;
+            margin: 80px auto;
+            &:hover {
+                background: rgb(24, 77, 192);
+                color:  #fff;
+                cursor: pointer;
+            }
+        }
+    }
+}

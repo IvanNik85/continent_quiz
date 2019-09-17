@@ -1,0 +1,46 @@
+@import "../css/main.scss";
+
+.home {
+    min-height: 100vh;
+    position: relative;     
+
+    .scoreNumber, .play {
+        padding: 15px 18px;
+        border: 2px solid green;
+        border-radius: 10px;
+        background: transparent;
+        color:  green;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 8px 0;
+        &:focus {
+            outline: none;
+        }  
+    }  
+    .playDiv {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 15%; 
+
+        a {
+            text-decoration: none;        
+        }
+
+        .play {     
+            display: flex;
+            align-items: center;         
+            i {
+                padding-right: 10px;
+            }
+            &:focus {
+                outline: none;
+            }  
+            &:hover {
+                color: #fff;
+                background: green;
+                cursor: pointer;
+            }  
+        }
+    }
+}

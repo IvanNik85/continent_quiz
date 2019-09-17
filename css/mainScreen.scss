@@ -1,0 +1,64 @@
+@import "../css/main.scss";
+
+.mainScreen {    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .question {
+        display: flex;
+        position: relative;
+        height: 60px;
+        align-items: center;
+        padding: 5px 30px;
+        background: transparent;
+        font-size: 20px;        
+        border: 2px solid orangered;
+        border-radius: 10px;
+        width: 200px;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 5px;
+        transition: .2s;
+        box-sizing: border-box;
+        cursor: pointer;
+        .result i {
+            font-size: 50px;
+            position: absolute;
+            right: 5%;
+            transform: translateY(-50%);
+            top: 50%;
+        }
+        > i {
+            color: orangered;
+            padding-right: 15px;
+        }
+        &:focus {
+            background: rgb(241, 207, 193);            
+        }
+        // &:hover {
+        //     cursor: pointer;
+        //     background: rgb(231, 125, 79);
+        // }        
+    }
+    .next {
+        padding: 15px 20px;
+        background: green;
+        color: #fff;        
+        margin: 30px auto;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        font-size: 18px;
+        font-weight: bold;        
+        width: 130px;
+        transition: .2s;
+        display: none;
+        
+        &:hover {
+            background: #fff;
+            color: green;
+            border: 2px solid green;            
+            cursor: pointer;
+        }
+    }
+}

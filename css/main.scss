@@ -1,0 +1,17 @@
+body {
+    min-height: 100vh;    
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 5%;  
+}
+h3 {
+    text-transform: uppercase;
+    color: rgb(109, 109, 109);
+    margin: 0;
+}
+h1 {
+    color: rgb(109, 109, 109);
+    margin: 0 0 20px 0;
+}
+button:focus {
+    outline: none;
+}
