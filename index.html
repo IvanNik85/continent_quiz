@@ -9,32 +9,90 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="home">
-        <h3>Continent quiz</h3>
-        <h1>Your Scores</h1>
-        <div class="score">
-            <button type="button" class="scoreNumber">#1</button>
-        </div>
-        <div class="score">
-            <button type="button" class="scoreNumber">#2</button>
-        </div>
-        <div class="score">
-            <button type="button" class="scoreNumber">#3</button>
-        </div>  
-        <div class="playDiv">
-            <a href="./html/mainScreen.html">
+       <div class="hide">
+            <div class="header">
+                <h3>CONTINENT <span>QUIZ</span></h3>
+                <h1>Your Scores</h1>
+            </div>
+            <div class="score">
+                <button type="button" class="scoreNumber">#1</button>
+                <div class="resDate">
+                    <span class="date"></span>
+                    <span class="pos no1"></span>
+                </div>
+            </div>
+            <div class="score">
+                <button type="button" class="scoreNumber">#2</button>
+                <div class="resDate">
+                    <span class="date"></span>
+                    <span class="pos no2"></span>
+                </div>
+            </div>
+            <div class="score">
+                <button type="button" class="scoreNumber">#3</button>
+                <div class="resDate">
+                    <span class="date"></span>
+                    <span class="pos no3"></span>
+                </div>
+            </div>  
+            <div class="playDiv">               
                 <button type="button" class="play">
                     <i class="material-icons">category</i>Play
-                </button>   
-            </a>
-        </div>  
+                </button>                 
+            </div>          
+       </div>
     </div>
+
+    <div class="mainScreen">
+        <div class="header">
+             <h3>Continent quiz</h3>
+             <h1>Question <span class="questionNum">1</span> of 5</h1>
+        </div>
+         <img src="#" alt="image1">
+ 
+         <div class="questions">
+             <button class="question one">
+                 <i class="material-icons">category</i>
+                 <span class="name"></span>
+                 <span class="result">
+                     <i class="material-icons"></i></span> <!-- check clear -->
+             </button>
+             <button class="question two">
+                 <i class="material-icons">category</i>
+                 <span class="name"></span>
+                 <span class="result"><i class="material-icons"></i></span>
+ 
+             </button>
+             <button class="question three">
+                 <i class="material-icons">category</i>
+                 <span class="name"></span>
+                 <span class="result"><i class="material-icons"></i></span>
+             </button>
+         </div>
+         <button class="next">
+             Next
+         </button>
+     </div>
+
+     <div class="finishPage">
+        <div class="header">
+             <h3>Continent quiz</h3>
+             <h1>Results</h1>   
+        </div> 
+         <div class="centered">
+             <i class="material-icons">category</i>
+             <h1>Your score</h1>
+             <h5>0</h5> <span> pts</span>
+         </div>
+         <a href="./index.html"><button type="button" class="finishBtn">Finish</button></a>
+     </div>        
+    <div class="continentQuiz">Continent <span>Quiz</span></div>
     <script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>    
 </body>
 </html>

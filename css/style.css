@@ -1,33 +1,83 @@
 body {
   min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
-  margin-left: 5%;
+  margin: 0;
+  padding: 0;
 }
 
-h3 {
-  text-transform: uppercase;
+body .header {
+  padding: 30px 15px 20px 50px;
+  font-family: 'Open Sans', sans-serif;
   color: #6d6d6d;
+}
+
+body .header h3 {
+  text-transform: uppercase;
   margin: 0;
 }
 
-h1 {
-  color: #6d6d6d;
-  margin: 0 0 20px 0;
+body .header h1 {
+  margin: 0;
+  font-weight: normal;
 }
 
-button:focus {
+body button:focus {
   outline: none;
 }
 
 .home {
   min-height: 100vh;
   position: relative;
+  -webkit-animation: back 1s 1s forwards;
+          animation: back 1s 1s forwards;
+  background: #000;
+}
+
+.home .hide {
+  display: none;
+}
+
+.home .score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 50px;
+}
+
+.home .score .resDate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.home .score .resDate .date {
+  font-size: 15px;
+  padding-left: 30px;
+  color: #6d6d6d;
+}
+
+.home .score .resDate .date i {
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.home .score .resDate .pos {
+  font-size: 26px;
+  font-weight: bold;
+  padding-left: 30px;
+  color: #6d6d6d;
 }
 
 .home .scoreNumber, .home .play {
-  padding: 15px 18px;
-  border: 2px solid green;
-  border-radius: 10px;
+  border: 3px solid green;
+  border-radius: 15px;
   background: transparent;
   color: green;
   font-size: 18px;
@@ -37,6 +87,11 @@ button:focus {
 
 .home .scoreNumber:focus, .home .play:focus {
   outline: none;
+}
+
+.home .scoreNumber {
+  padding: 16px 18px;
+  font-size: 25px;
 }
 
 .home .playDiv {
@@ -58,6 +113,7 @@ button:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 16px 20px;
 }
 
 .home .playDiv .play i {
@@ -71,6 +127,236 @@ button:focus {
 .home .playDiv .play:hover {
   color: #fff;
   background: green;
+  cursor: pointer;
+}
+
+.continentQuiz {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-animation: animate .5s 1s forwards;
+          animation: animate .5s 1s forwards;
+  color: #fff;
+}
+
+.continentQuiz span {
+  color: green;
+}
+
+@-webkit-keyframes animate {
+  from {
+    top: 50%;
+    visibility: visible;
+  }
+  to {
+    top: 42px;
+    left: 132px;
+    letter-spacing: -1;
+    font-size: 20px;
+    color: #000;
+    visibility: hidden;
+  }
+}
+
+@keyframes animate {
+  from {
+    top: 50%;
+    visibility: visible;
+  }
+  to {
+    top: 42px;
+    left: 132px;
+    letter-spacing: -1;
+    font-size: 20px;
+    color: #000;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes back {
+  from {
+    background: #000;
+  }
+  to {
+    background: #fff;
+  }
+}
+
+@keyframes back {
+  from {
+    background: #000;
+  }
+  to {
+    background: #fff;
+  }
+}
+
+.mainScreen {
+  display: none;
+}
+
+.mainScreen img {
+  max-width: 95%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+@media (min-width: 776px) {
+  .mainScreen img {
+    max-width: 60%;
+    display: block;
+    margin: auto;
+  }
+}
+
+.mainScreen .questions {
+  margin-top: 20px;
+}
+
+.mainScreen .questions .question {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  height: 70px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 0 5px 15px;
+  background: transparent;
+  font-size: 20px;
+  border: 3px solid #feb63d;
+  border-radius: 15px;
+  width: 200px;
+  font-weight: bold;
+  width: 80%;
+  margin: auto;
+  margin-top: 5px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+}
+
+.mainScreen .questions .question .result i {
+  font-size: 50px;
+  position: absolute;
+  right: 5%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+}
+
+.mainScreen .questions .question > i {
+  color: #feb63d;
+  padding-right: 10px;
+}
+
+.mainScreen .questions .question .result i.material-icons {
+  color: green;
+}
+
+@media (min-width: 776px) {
+  .mainScreen .questions .question {
+    max-width: 60%;
+    margin: 8px auto;
+  }
+}
+
+.mainScreen .questions .focus {
+  background: #feb63d;
+  border: none;
+  color: #fff;
+}
+
+.mainScreen .questions .focus > i {
+  color: #fff;
+}
+
+.mainScreen .next {
+  padding: 15px 20px;
+  background: #fff;
+  color: green;
+  margin: 30px auto;
+  border-radius: 15px;
+  border: 3px solid green;
+  font-size: 20px;
+  font-weight: bold;
+  width: 130px;
+  height: 65px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: none;
+}
+
+.mainScreen .next:hover {
+  background: green;
+  color: #fff;
+  cursor: pointer;
+}
+
+.finishPage {
+  display: none;
+}
+
+.finishPage .centered {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.finishPage .centered h1 {
+  margin: 20px 0 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #6d6d6d;
+}
+
+.finishPage .centered h5 {
+  font-size: 60px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.finishPage .centered i {
+  display: block;
+  font-size: 100px;
+  color: #0050a5;
+}
+
+.finishPage .centered span {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.finishPage a {
+  text-decoration: none;
+}
+
+.finishPage a .finishBtn {
+  width: 180px;
+  padding: 15px;
+  color: #0050a5;
+  background: #fff;
+  border: 3px solid #0050a5;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: block;
+  margin: 40px auto;
+}
+
+.finishPage a .finishBtn:hover {
+  background: #0050a5;
+  color: #fff;
   cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
