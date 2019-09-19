@@ -76,10 +76,10 @@ body button:focus {
 }
 
 .home .scoreNumber, .home .play {
-  border: 3px solid green;
+  border: 3px solid #078b4f;
   border-radius: 15px;
   background: transparent;
-  color: green;
+  color: #078b4f;
   font-size: 18px;
   font-weight: bold;
   margin: 8px 0;
@@ -100,10 +100,29 @@ body button:focus {
           transform: translateX(-50%);
   left: 50%;
   bottom: 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .home .playDiv a {
   text-decoration: none;
+}
+
+.home .playDiv .homeBtn {
+  width: 62px;
+  height: 62px;
+  color: #fff;
+  background: #0050a5;
+  border-radius: 15px;
+  border: 2px solid #0050a5;
+  margin-right: 10px;
 }
 
 .home .playDiv .play {
@@ -126,7 +145,7 @@ body button:focus {
 
 .home .playDiv .play:hover {
   color: #fff;
-  background: green;
+  background: #078b4f;
   cursor: pointer;
 }
 
@@ -146,7 +165,7 @@ body button:focus {
 }
 
 .continentQuiz span {
-  color: green;
+  color: #078b4f;
 }
 
 @-webkit-keyframes animate {
@@ -246,22 +265,75 @@ body button:focus {
   cursor: pointer;
 }
 
-.mainScreen .questions .question .result i {
-  font-size: 50px;
+.mainScreen .questions .question > i {
+  color: #feb63d;
+  padding-right: 10px;
+}
+
+.mainScreen .questions .question .result1 {
   position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   right: 5%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   top: 50%;
 }
 
-.mainScreen .questions .question > i {
-  color: #feb63d;
-  padding-right: 10px;
+.mainScreen .questions .question .result1 .check1 {
+  display: block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
 }
 
-.mainScreen .questions .question .result i.material-icons {
-  color: green;
+.mainScreen .questions .question .result1 .check1 .two1 {
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  border-left: 3px solid #078b4f;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(67%, -170%) rotate(45deg);
+  transform: translate(67%, -170%) rotate(45deg);
+}
+
+.mainScreen .questions .question .result1 .check1 .one1 {
+  position: absolute;
+  top: 66%;
+  left: 30%;
+  border-right: 3px solid #078b4f;
+  width: 15px;
+  height: 15px;
+  -webkit-transform: translate(-215%, -183%) rotate(-45deg);
+  transform: translate(-215%, -183%) rotate(-45deg);
+}
+
+.mainScreen .questions .question .result1 .check1 .two2 {
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  border-left: 3px solid #e01111;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(67%, -170%) rotate(45deg);
+  transform: translate(67%, -170%) rotate(45deg);
+}
+
+.mainScreen .questions .question .result1 .check1 .one2 {
+  position: absolute;
+  top: 65%;
+  left: 30%;
+  border-right: 3px solid #e01111;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(-165%, -160%) rotate(-45deg);
+  transform: translate(-165%, -160%) rotate(-45deg);
+}
+
+.mainScreen .questions .question .result1 i.material-icons {
+  color: #078b4f;
 }
 
 @media (min-width: 776px) {
@@ -284,10 +356,10 @@ body button:focus {
 .mainScreen .next {
   padding: 15px 20px;
   background: #fff;
-  color: green;
+  color: #078b4f;
   margin: 30px auto;
   border-radius: 15px;
-  border: 3px solid green;
+  border: 3px solid #078b4f;
   font-size: 20px;
   font-weight: bold;
   width: 130px;
@@ -298,7 +370,7 @@ body button:focus {
 }
 
 .mainScreen .next:hover {
-  background: green;
+  background: #078b4f;
   color: #fff;
   cursor: pointer;
 }
@@ -358,5 +430,93 @@ body button:focus {
   background: #0050a5;
   color: #fff;
   cursor: pointer;
+}
+
+@-webkit-keyframes checked1 {
+  from {
+    -webkit-transform: translate(-215%, -183%) rotate(-45deg);
+            transform: translate(-215%, -183%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-102%, -28%) rotate(-45deg);
+            transform: translate(-102%, -28%) rotate(-45deg);
+  }
+}
+
+@keyframes checked1 {
+  from {
+    -webkit-transform: translate(-215%, -183%) rotate(-45deg);
+            transform: translate(-215%, -183%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-102%, -28%) rotate(-45deg);
+            transform: translate(-102%, -28%) rotate(-45deg);
+  }
+}
+
+@-webkit-keyframes checked2 {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-43%, -53%) rotate(45deg);
+            transform: translate(-43%, -53%) rotate(45deg);
+  }
+}
+
+@keyframes checked2 {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-43%, -53%) rotate(45deg);
+            transform: translate(-43%, -53%) rotate(45deg);
+  }
+}
+
+@-webkit-keyframes animateOne {
+  from {
+    -webkit-transform: translate(-165%, -160%) rotate(-45deg);
+            transform: translate(-165%, -160%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-52%, -39%) rotate(-45deg);
+            transform: translate(-52%, -39%) rotate(-45deg);
+  }
+}
+
+@keyframes animateOne {
+  from {
+    -webkit-transform: translate(-165%, -160%) rotate(-45deg);
+            transform: translate(-165%, -160%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-52%, -39%) rotate(-45deg);
+            transform: translate(-52%, -39%) rotate(-45deg);
+  }
+}
+
+@-webkit-keyframes animateTwo {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-47%, -49%) rotate(45deg);
+            transform: translate(-47%, -49%) rotate(45deg);
+  }
+}
+
+@keyframes animateTwo {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-47%, -49%) rotate(45deg);
+            transform: translate(-47%, -49%) rotate(45deg);
+  }
 }
 /*# sourceMappingURL=style.css.map */

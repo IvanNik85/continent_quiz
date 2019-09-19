@@ -7,18 +7,23 @@ $(document).ready(function () {
     let score = 0;
     let rightAnswer;
     let page = $(".questionNum").html(); 
-    quizPage();  
     let date = new Date().toLocaleDateString();
     let rank = [".no1", ".no2", ".no3"];    
     let result = {
         date: "",
         score: ""
     }   
-    let insertComma = (str, sub, pos) => `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
+    quizPage();    
+
+    let insertComma = (str,sub,pos) => {
+        if(str.length > 3) {
+            return `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
+        } 
+        return str;
+    }
     
     if(localStorage.getItem("topScores")) {
-        topScores = JSON.parse(localStorage.getItem("topScores"));
-        console.log(topScores)
+        topScores = JSON.parse(localStorage.getItem("topScores"));        
     } else {
         topScores = [];
     }
@@ -26,10 +31,12 @@ $(document).ready(function () {
     async function quizPage() {         
         let res = await fetch('https://api.myjson.com/bins/a6da9');
         const myJson = await res.json();   
+
         for(let i in myJson) {                
             images.push(myJson[i].image);
             continents.push(myJson[i].continent)              
-        }      
+        }     
+
         for(let i=0; i<3;i++) {                       
             $(rank[i]).html(`<i class="material-icons">
             chevron_left
@@ -42,20 +49,18 @@ $(document).ready(function () {
             more_horiz
             </i>`);
         }
+
         for(let i in topScores) {            
             if(topScores.length > 0) { 
                 $(rank[i]).html(insertComma('' + topScores[i].score, ",", 1) + ' pts');
                 $(rank[i]).prev().html(`on ${topScores[i].date}`);
             }
-        }        
-         
-        $(".centered h5").html(JSON.parse(localStorage.getItem("score")));
-
+        }     
+        
         const randNum =  Math.floor(Math.random() * images.length);                           
         $(".mainScreen img").attr("src", `${images[randNum]}`);         
-        rightAnswer = continents[randNum];
+        rightAnswer = continents[randNum];        
         
-        console.log(rightAnswer)
         noRepeat = [...noRepeat, rightAnswer];            
         let questionNum = [".one .name", ".two .name", ".three .name"];
         while(noRepeat.length < 3) {
@@ -78,37 +83,46 @@ $(document).ready(function () {
     }
     clickEvents();
 
-    function rightAns() {  
-        $(this).addClass('focus');
-        let allThree = $(this).parent().children();  
-        console.log(allThree[0])  
+    function rightAns() {          
+        $(this).addClass('focus');        
+        let allThree = $(".question").parent().children();
+         
         $(".next").css('display', 'block');
         let answer = $(this).find(".name").html();
         if(answer == rightAnswer) { 
-            score += 750;           
+            score += 750;   
         } else {
-            $(this).children().last().children().html("clear").css("color","red");  
+            $(this).find(".one2").css({
+                "animation":"animateOne .5s forwards", 
+                "color":"red"
+            }); 
+            $(this).find(".two2").css({
+                "animation":"animateTwo .5s forwards", 
+                "color":"red"
+            }); 
         }
-
-        for(let i =0; i< 3; i++) {               
-            if(allThree[i].lastElementChild.previousElementSibling.innerHTML == rightAnswer) {
-                allThree[i].lastElementChild.firstElementChild.innerHTML = "check";                                   
-            }                                 
-        }   
         
+        for(let i =0; i< 3; i++) {      
+            if(allThree[i].lastElementChild.previousElementSibling.innerHTML == rightAnswer) {
+               allThree[i].lastElementChild.firstElementChild.firstElementChild.style.animation = `checked1 .5s forwards`;  
+               allThree[i].lastElementChild.firstElementChild.firstElementChild.nextElementSibling.style.animation = `checked2 .5s forwards`;                                               
+            }                     
+        }   
+
         $(".one").unbind('click', rightAns);
         $(".two").unbind('click', rightAns);
-        $(".three").unbind('click', rightAns);            
-    }    
+        $(".three").unbind('click', rightAns);         
+    }  
+      
     $(".next").click(function() { 
-        $(".question").removeClass('focus');             
-        console.log(score);
-        quizPage();
+        $(".question").removeClass('focus');            
+        $(".questionNum").html(++page);
         $(this).hide();
-        $(".questionNum").html(++page);         
-        console.log(result)
+        quizPage();        
+       
         if(page == 6) {               
-            localStorage.setItem("score", JSON.stringify(score));  
+            localStorage.setItem("score", JSON.stringify(score));
+            $(".centered h5").html(score); 
             result.score = score,
             result.date = date;            
             topScores = [...topScores, result];  
@@ -122,6 +136,11 @@ $(document).ready(function () {
         $(".result i").html("").css("color", "");        
         clickEvents();        
         tempArr = [];
+
+        $('.one1').attr("style","");  
+        $('.two1').attr("style","");
+        $('.one2').attr("style","");  
+        $('.two2').attr("style","");
     });  
 
     function runCounter() {       
@@ -131,8 +150,6 @@ $(document).ready(function () {
         });        
     }    
 
-    $(".hide").delay(700).fadeIn(1600);
-
     function shuffle(array) {       
         for(let i = 0; i < 3; i++) {
             tempArr.push(array.splice(Math.floor(Math.random() * array.length), 1));
@@ -140,9 +157,24 @@ $(document).ready(function () {
         return tempArr;  
     }   
 
+    $(".hide").delay(700).fadeIn(1600);
+
     $(".play").click(function() {
         $('.home').hide();
         $('.mainScreen').show();
     });
+
+    $(".question").append(
+        `<i class="material-icons">category</i>
+        <span class="name"></span>
+        <div class="result1">
+            <div class="check1">                        
+                <div class="one1"></div>
+                <div class="two1"></div>
+                <div class="one2"></div>
+                <div class="two2"></div>
+            </div>
+        </div>`);
+  
 })
 
