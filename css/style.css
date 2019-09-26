@@ -57,22 +57,22 @@ body button:focus {
           flex-flow: column wrap;
 }
 
-.home .score .resDate .date {
-  font-size: 15px;
-  padding-left: 30px;
-  color: #6d6d6d;
-}
-
-.home .score .resDate .date i {
-  font-size: 15px;
-  padding-left: 10px;
-}
-
 .home .score .resDate .pos {
   font-size: 26px;
   font-weight: bold;
   padding-left: 30px;
   color: #6d6d6d;
+}
+
+.home .score .date {
+  font-size: 15px;
+  padding-left: 30px;
+  color: #6d6d6d;
+}
+
+.home .score .date i {
+  font-size: 15px;
+  padding-left: 10px;
 }
 
 .home .scoreNumber, .home .play {
@@ -109,6 +109,12 @@ body button:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-height: 530px) {
+  .home .playDiv {
+    position: relative;
+  }
 }
 
 .home .playDiv a {
@@ -171,12 +177,13 @@ body button:focus {
 @-webkit-keyframes animate {
   from {
     top: 50%;
+    font-size: 50px;
     visibility: visible;
   }
   to {
     top: 42px;
-    left: 132px;
-    letter-spacing: -1;
+    left: 130px;
+    letter-spacing: -2;
     font-size: 20px;
     color: #000;
     visibility: hidden;
@@ -186,12 +193,13 @@ body button:focus {
 @keyframes animate {
   from {
     top: 50%;
+    font-size: 50px;
     visibility: visible;
   }
   to {
     top: 42px;
-    left: 132px;
-    letter-spacing: -1;
+    left: 130px;
+    letter-spacing: -2;
     font-size: 20px;
     color: #000;
     visibility: hidden;
@@ -270,76 +278,14 @@ body button:focus {
   padding-right: 10px;
 }
 
-.mainScreen .questions .question .result1 {
-  position: absolute;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  right: 5%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  top: 50%;
-}
-
-.mainScreen .questions .question .result1 .check1 {
-  display: block;
-  position: relative;
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
-}
-
-.mainScreen .questions .question .result1 .check1 .two1 {
-  position: absolute;
-  top: 70%;
-  left: 70%;
-  border-left: 3px solid #078b4f;
-  width: 35px;
-  height: 35px;
-  -webkit-transform: translate(67%, -170%) rotate(45deg);
-  transform: translate(67%, -170%) rotate(45deg);
-}
-
-.mainScreen .questions .question .result1 .check1 .one1 {
-  position: absolute;
-  top: 66%;
-  left: 30%;
-  border-right: 3px solid #078b4f;
-  width: 15px;
-  height: 15px;
-  -webkit-transform: translate(-215%, -183%) rotate(-45deg);
-  transform: translate(-215%, -183%) rotate(-45deg);
-}
-
-.mainScreen .questions .question .result1 .check1 .two2 {
-  position: absolute;
-  top: 70%;
-  left: 70%;
-  border-left: 3px solid #e01111;
-  width: 35px;
-  height: 35px;
-  -webkit-transform: translate(67%, -170%) rotate(45deg);
-  transform: translate(67%, -170%) rotate(45deg);
-}
-
-.mainScreen .questions .question .result1 .check1 .one2 {
-  position: absolute;
-  top: 65%;
-  left: 30%;
-  border-right: 3px solid #e01111;
-  width: 35px;
-  height: 35px;
-  -webkit-transform: translate(-165%, -160%) rotate(-45deg);
-  transform: translate(-165%, -160%) rotate(-45deg);
-}
-
-.mainScreen .questions .question .result1 i.material-icons {
-  color: #078b4f;
-}
-
 @media (min-width: 776px) {
   .mainScreen .questions .question {
     max-width: 60%;
+    padding-left: 20px;
     margin: 8px auto;
+  }
+  .mainScreen .questions .question > i {
+    padding-right: 15px;
   }
 }
 
@@ -351,6 +297,78 @@ body button:focus {
 
 .mainScreen .questions .focus > i {
   color: #fff;
+}
+
+.mainScreen .result1 {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  right: 2%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+}
+
+.mainScreen .result1 .check1 {
+  display: block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.mainScreen .result1 .check1 .one1 {
+  position: absolute;
+  top: 66%;
+  left: 30%;
+  border-right: 3px solid #078b4f;
+  width: 15px;
+  height: 15px;
+  -webkit-transform: translate(-215%, -183%) rotate(-45deg);
+  transform: translate(-215%, -183%) rotate(-45deg);
+}
+
+.mainScreen .result1 .check1 .two1 {
+  position: absolute;
+  top: 72%;
+  left: 67%;
+  border-left: 3px solid #078b4f;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(72%, -173%) rotate(45deg);
+  transform: translate(72%, -173%) rotate(45deg);
+}
+
+.mainScreen .result1 .check1 .one2 {
+  position: absolute;
+  top: 65%;
+  left: 30%;
+  border-right: 3px solid #e01111;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(-165%, -160%) rotate(-45deg);
+  transform: translate(-165%, -160%) rotate(-45deg);
+}
+
+.mainScreen .result1 .check1 .two2 {
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  border-left: 3px solid #e01111;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(67%, -170%) rotate(45deg);
+  transform: translate(67%, -170%) rotate(45deg);
+}
+
+.mainScreen .result1 i.material-icons {
+  color: #078b4f;
+}
+
+@media (min-width: 554px) {
+  .mainScreen .result1 {
+    right: 5%;
+  }
 }
 
 .mainScreen .next {

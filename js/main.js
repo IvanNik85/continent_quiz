@@ -1,6 +1,8 @@
 $(document).ready(function () {    
     let continents = [];
     let images = [];
+    let contCopy;
+    let imgCopy;
     let noRepeat = [];    
     let topScores = [];
     let tempArr = [];
@@ -12,7 +14,7 @@ $(document).ready(function () {
     let result = {
         date: "",
         score: ""
-    }   
+    }      
     quizPage();    
 
     let insertComma = (str,sub,pos) => {
@@ -28,13 +30,17 @@ $(document).ready(function () {
         topScores = [];
     }
         
-    async function quizPage() {         
+    async function quizPage() { 
         let res = await fetch('https://api.myjson.com/bins/a6da9');
         const myJson = await res.json();   
 
         for(let i in myJson) {                
             images.push(myJson[i].image);
-            continents.push(myJson[i].continent)              
+            continents.push(myJson[i].continent);
+            if(continents.length == 35) {
+                contCopy = [...continents];
+                imgCopy = [...images];   
+            }        
         }     
 
         for(let i=0; i<3;i++) {                       
@@ -57,14 +63,15 @@ $(document).ready(function () {
             }
         }     
         
-        const randNum =  Math.floor(Math.random() * images.length);                           
-        $(".mainScreen img").attr("src", `${images[randNum]}`);         
-        rightAnswer = continents[randNum];        
-        
+        const randNum =  Math.floor(Math.random() * imgCopy.length);                           
+        $(".mainScreen img").attr("src", `${imgCopy[randNum]}`);
+        rightAnswer = contCopy[randNum];        
+        contCopy.splice(randNum, 1);
+        imgCopy.splice(randNum, 1);        
         noRepeat = [...noRepeat, rightAnswer];            
         let questionNum = [".one .name", ".two .name", ".three .name"];
         while(noRepeat.length < 3) {
-            let rand = continents[Math.floor(Math.random() * continents.length)];
+            let rand = contCopy[Math.floor(Math.random() * contCopy.length)];
             if(noRepeat.indexOf(rand) == -1) {
                 noRepeat.push(rand);                    
             } 
@@ -93,12 +100,10 @@ $(document).ready(function () {
             score += 750;   
         } else {
             $(this).find(".one2").css({
-                "animation":"animateOne .5s forwards", 
-                "color":"red"
-            }); 
+                "animation":"animateOne .5s forwards"               
+            }).parent().css('margin-right','10px'); 
             $(this).find(".two2").css({
-                "animation":"animateTwo .5s forwards", 
-                "color":"red"
+                "animation":"animateTwo .5s forwards"
             }); 
         }
         
@@ -141,6 +146,7 @@ $(document).ready(function () {
         $('.two1').attr("style","");
         $('.one2').attr("style","");  
         $('.two2').attr("style","");
+        $('.check1').attr("style","");
     });  
 
     function runCounter() {       
@@ -174,7 +180,8 @@ $(document).ready(function () {
                 <div class="one2"></div>
                 <div class="two2"></div>
             </div>
-        </div>`);
+        </div>`
+    );
   
 })
 
