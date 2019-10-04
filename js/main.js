@@ -90,7 +90,8 @@ $(document).ready(function () {
     }
     clickEvents();
 
-    function rightAns() {          
+    function rightAns() {  
+        console.log(this)        
         $(this).addClass('focus');        
         let allThree = $(".question").parent().children();
          
@@ -112,11 +113,17 @@ $(document).ready(function () {
                allThree[i].lastElementChild.firstElementChild.firstElementChild.style.animation = `checked1 .5s forwards`;  
                allThree[i].lastElementChild.firstElementChild.firstElementChild.nextElementSibling.style.animation = `checked2 .5s forwards`;                                               
             }                     
-        }   
+        }        
 
         $(".one").unbind('click', rightAns);
         $(".two").unbind('click', rightAns);
-        $(".three").unbind('click', rightAns);         
+        $(".three").unbind('click', rightAns);   
+
+        $('html, body').delay(600).animate({
+            scrollTop: $(document).height()
+        },
+        1500);
+        return false;      
     }  
       
     $(".next").click(function() { 
