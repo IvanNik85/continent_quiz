@@ -94,8 +94,10 @@ $(document).ready(function () {
         console.log(this)        
         $(this).addClass('focus');        
         let allThree = $(".question").parent().children();
-         
-        $(".next").css('display', 'block');
+         setTimeout(function() {
+            $(".next").css('display', 'block');
+         }, 700)
+        
         let answer = $(this).find(".name").html();
         if(answer == rightAnswer) { 
             score += 750;   
@@ -115,22 +117,24 @@ $(document).ready(function () {
             }                     
         }        
 
-        $(".one").unbind('click', rightAns);
-        $(".two").unbind('click', rightAns);
-        $(".three").unbind('click', rightAns);   
-
-        $('html, body').delay(600).animate({
+        $('html, body').delay(800).animate({
             scrollTop: $(document).height()
         },
-        1500);
-        return false;      
+        1500);    
+
+        $(".one").unbind('click', rightAns);
+        $(".two").unbind('click', rightAns);
+        $(".three").unbind('click', rightAns);  
     }  
       
     $(".next").click(function() { 
         $(".question").removeClass('focus');            
         $(".questionNum").html(++page);
         $(this).hide();
-        quizPage();        
+        quizPage();   
+        $('html, body').animate({
+            scrollTop: "0px"
+        },150);       
        
         if(page == 6) {               
             localStorage.setItem("score", JSON.stringify(score));
