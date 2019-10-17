@@ -206,7 +206,7 @@ $red: #e01111;
             height: 60px;  
             overflow: hidden;
         
-            .one1 {            
+            .oneCheck {            
                 position: absolute;
                 top: 66%;
                 left: 30%;            
@@ -216,7 +216,7 @@ $red: #e01111;
                 -webkit-transform: translate(-215%, -183%) rotate(-45deg);
                 transform: translate(-215%, -183%) rotate(-45deg);
             }      
-            .two1 {           
+            .twoCheck {           
                 position: absolute;
                 top: 72%;
                 left: 67%;          
@@ -226,7 +226,7 @@ $red: #e01111;
                 -webkit-transform: translate(72%, -173%) rotate(45deg); 
                 transform: translate(72%, -173%) rotate(45deg)                        
             }        
-            .one2 {            
+            .oneCross {            
                 position: absolute;
                 top: 65%;
                 left: 30%;            
@@ -236,7 +236,7 @@ $red: #e01111;
                 -webkit-transform: translate(-165%, -160%) rotate(-45deg); 
                 transform: translate(-165%, -160%) rotate(-45deg);  
             }          
-            .two2 {           
+            .twoCross {           
                 position: absolute;
                 top: 70%;
                 left: 70%;           
@@ -326,14 +326,14 @@ $red: #e01111;
 }
 
 //animate check
-@keyframes checked1 {
+@keyframes checkedOne {
     from {
         transform: translate(-215%, -183%) rotate(-45deg);
     } to {
         transform: translate(-102%, -28%) rotate(-45deg);
     }
 }
-@keyframes checked2 {
+@keyframes checkedTwo {
     from {
         transform: translate(67%, -170%) rotate(45deg);    
     } to {        

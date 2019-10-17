@@ -3,19 +3,52 @@
     $(function () {
         let continents = [];
         let images = [];
-        let contCopy, imgCopy, rightAnswer;        
+        let rightAnswer;        
         let noRepeat = [];
-        let topScores = [];
+        let topScores = [];        
         let tempArr = [];
-        let score = 0;        
-        let page = $(".questionNum").html();
+        let score = 0;  
         let date = new Date().toLocaleDateString();
         let rank = [".no1", ".no2", ".no3"];
+        let allThree = [".one",".two",".three"];
+        let questionNum = [".one .name", ".two .name", ".three .name"];
         let allData = [];        
         let result = {
             date: "",
             score: ""
         }       
+        
+        //Cache DOM
+        const $mainScreen = $(".mainScreen");
+        const $htmlBody = $('html, body');
+        const $one = $mainScreen.find(".one");
+        const $two = $mainScreen.find(".two");
+        const $three = $mainScreen.find(".three");
+        const $question = $mainScreen.find(".question");
+        const $questionNum = $mainScreen.find(".questionNum");
+        const $nextBtn = $mainScreen.find(".next"); 
+        const $finishPage = $(".finishPage"); 
+        const $finalScore = $finishPage.find("h5"); 
+        const $finishBtn = $('.finishBtn');       
+        const $oneCheck = $question.find(".oneCheck");
+        const $twoCheck = $question.find(".twoCheck");
+        const $oneCross = $question.find(".oneCross");
+        const $twoCross = $question.find(".twoCross");
+        const $home = $('.home');
+        const $hide = $home.find(".hide");  
+        const $play = $home.find(".play");  
+        let page = $questionNum.html();
+
+        //Bind Events
+        $nextBtn.on("click", nextQuestion);
+        $finishBtn.on("click", finish);
+        $play.on("click", play);
+
+        function clickEvents() {
+            $one.click(rightAns);
+            $two.click(rightAns);
+            $three.click(rightAns);
+        }
 
         //************** DATA ******************/
         const Data = (function() {
@@ -30,7 +63,7 @@
                 getData
             }
         })()     
-
+        
         Data.getData();        
 
         // Insert comma after first character in score list
@@ -82,147 +115,132 @@
         //Display not repeating questions and correct answer image
         function showQuestions() {        
             const randNum = Math.floor(Math.random() * images.length);
-            $(".mainScreen img").attr("src", `${images[randNum]}`);
+            $mainScreen.find("img").attr("src", `${images[randNum]}`);
             rightAnswer = continents[randNum];
             continents.splice(randNum, 1);
             images.splice(randNum, 1);
-            noRepeat = [...noRepeat, rightAnswer];
-            let questionNum = [".one .name", ".two .name", ".three .name"];
+            noRepeat = [...noRepeat, rightAnswer];           
+            
             while (noRepeat.length < 3) {
                 let rand = continents[Math.floor(Math.random() * continents.length)];
                 if (noRepeat.indexOf(rand) == -1) {
-                    noRepeat.push(rand);
+                    noRepeat.unshift(rand);
                 }
             }
+            
             shuffle(noRepeat);
-
+           
             for (let i in questionNum) {
                 $(`${questionNum[i]}`).html(tempArr[i]);
             }
         }
 
-        //Answers click events
-        function clickEvents() {
-            $(".one").click(rightAns);
-            $(".two").click(rightAns);
-            $(".three").click(rightAns);
-        }
+        //Answers click events        
         clickEvents();
-        
+
         //Calculating correct answers scores and trigering animations
         function rightAns() {
-            let $this = $(this);
-            console.log($this)
-            $this.addClass('focus');
-            let allThree = $(".question").parent().children();
+            let $this = $(this);            
+            $this.addClass('focus');    
+            let answer = $this.find(".name").html();            
             setTimeout(function () {
-                $(".next").css('display', 'block');
+                $nextBtn.css('display', 'block');
             }, 700)
 
-            let answer = $this.find(".name").html();
-            if (answer == rightAnswer) {
+            allThree.forEach(function(a) {     
+                if($(a).find(".name").html() === rightAnswer) {
+                    $(a).find(".oneCheck").css('animation','checkedOne .5s forwards');
+                    $(a).find(".twoCheck").css('animation','checkedTwo .5s forwards');
+                }      
+            })
+                    
+            if (answer === rightAnswer) {
                 score += 750;
             } else {
-                $this.find(".one2").css({
+                $this.find(".oneCross").css({
                     "animation": "animateOne .5s forwards"
                 }).parent().css('margin-right', '10px');
-                $this.find(".two2").css({
+                $this.find(".twoCross").css({
                     "animation": "animateTwo .5s forwards"
                 });
-            }
+            }       
 
-            for (let i = 0; i < 3; i++) {
-                if (allThree[i].lastElementChild.previousElementSibling.innerHTML == rightAnswer) {
-                    allThree[i].lastElementChild.firstElementChild.firstElementChild.style.animation = `checked1 .5s forwards`;
-                    allThree[i].lastElementChild.firstElementChild.firstElementChild.nextElementSibling.style.animation = `checked2 .5s forwards`;
-                }
-            }
-
-            $('html, body').delay(800).animate({
+            $htmlBody.delay(800).animate({
                 scrollTop: $(document).height()
-            },
-                1500);
+            },1500);
 
             (function unbindEvents() {
-                $(".one").unbind('click', rightAns);
-                $(".two").unbind('click', rightAns);
-                $(".three").unbind('click', rightAns);
-            })();
-            // unbindEvents();        
+                $one.unbind('click', rightAns);
+                $two.unbind('click', rightAns);
+                $three.unbind('click', rightAns);
+            })();                  
         }
 
         //****************** NEXT QUESTION *************** */        
-        $(".next").click(function () {
-            $(".question").removeClass('focus');
-            $(".questionNum").html(++page);
+        function nextQuestion() {
+            tempArr.length = 0;
+            $question.removeClass('focus');
+            $questionNum.html(++page);
             $(this).hide();
             showQuestions();
-            if (page != 6) {
-                $('html, body').animate({
+            //Show result on page 6, filter results by score and date and storage them
+            if (page !== 6)  {
+                $htmlBody.animate({
                     scrollTop: "0px"
-                }, 150);
-            } else { //if (page === 6)                             
-                $(".centered h5").html(score);
+                }, 250);
+            } else {                           
+                $finalScore.html(score);
                 result.score = score,
                 result.date = date;
-                topScores = [...topScores, result];
+                topScores = [...topScores, result];               
                 topScores.sort((a, b) => b.score - a.score);
+                topScores.sort((a, b) => {
+                    if(a.score === b.score) {
+                        return new Date(b.date).getTime() - new Date(a.date).getTime();
+                    }                    
+                });
                 topScores.length > 3 && topScores.pop();
                 localStorage.setItem("topScores", JSON.stringify(topScores));
-                $(".finishPage").show();
-                $('.mainScreen').hide();
+                $finishPage.show();
+                $mainScreen.hide();
                 runCounter();
-            }
-            $(".result i").html("").css("color", "");
-            clickEvents();
-            tempArr = [];
-
-            $('.one1').attr("style", "");
-            $('.two1').attr("style", "");
-            $('.one2').attr("style", "");
-            $('.two2').attr("style", "");
-            $('.check1').attr("style", "");
-        });
-
+            } 
+            
+            clickEvents();   
+            //Remove animation styles        
+            const animData = [$oneCheck, $twoCheck, $oneCross, $twoCross];            
+            for(let i of animData) {
+                i.removeAttr("style");
+            }                  
+        }
+        
+        //Start counter
         function runCounter() {
-            $('.centered h5').counterUp({
+            $finalScore.counterUp({
                 delay: 10,
                 time: 1500
             });
         }
-
-        function shuffle(array) {
+        //Shuffle display order of questions
+        function shuffle(array) {           
             for (let i = 0; i < 3; i++) {
                 tempArr.push(array.splice(Math.floor(Math.random() * array.length), 1));
-            }
-            return tempArr;
+            }          
+        }
+        //Display scores
+        function finish() {
+            scoresList();
         }
 
-        $('.finishBtn').click(function() {
-            scoresList();
-        })
-
-        $(".hide").delay(700).fadeIn(1600);
-
-        $(".play").click(function () {
-            $('.home').hide();
-            $('.mainScreen').show();
+        //Reveal questions and hide home screen
+        function play() {
+            $home.hide();
+            $mainScreen.show();
             showQuestions();
-        });
+        }
 
-        $(".question").append(
-            `<i class="material-icons">category</i>
-        <span class="name"></span>
-        <div class="result1">
-            <div class="check1">                        
-                <div class="one1"></div>
-                <div class="two1"></div>
-                <div class="one2"></div>
-                <div class="two2"></div>
-            </div>
-        </div>`
-        );
-
+        //Reveal home screen
+        $hide.delay(700).fadeIn(1600);
     })
 
 }(jQuery));
