@@ -184,8 +184,7 @@ $red: #e01111;
             }       
         }
         .focus {
-            background:#feb63d;  
-            border: none;
+            background:#feb63d; 
             color: #fff; 
             > i {
                 color: #fff; 
@@ -340,14 +339,14 @@ $red: #e01111;
         transform: translate(-43%, -53%) rotate(45deg);
     }
 }
-@keyframes animateOne {
+@keyframes crossOne {
     from {
         transform: translate(-165%, -160%) rotate(-45deg);        
     } to {
         transform: translate(-52%, -39%) rotate(-45deg);        
     }
 }
-@keyframes animateTwo {
+@keyframes crossTwo {
     from {
         transform: translate(67%, -170%) rotate(45deg);       
     } to {

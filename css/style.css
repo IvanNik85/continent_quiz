@@ -291,7 +291,6 @@ body button:focus {
 
 .mainScreen .questions .focus {
   background: #feb63d;
-  border: none;
   color: #fff;
 }
 
@@ -494,7 +493,7 @@ body button:focus {
   }
 }
 
-@-webkit-keyframes animateOne {
+@-webkit-keyframes crossOne {
   from {
     -webkit-transform: translate(-165%, -160%) rotate(-45deg);
             transform: translate(-165%, -160%) rotate(-45deg);
@@ -505,7 +504,7 @@ body button:focus {
   }
 }
 
-@keyframes animateOne {
+@keyframes crossOne {
   from {
     -webkit-transform: translate(-165%, -160%) rotate(-45deg);
             transform: translate(-165%, -160%) rotate(-45deg);
@@ -516,7 +515,7 @@ body button:focus {
   }
 }
 
-@-webkit-keyframes animateTwo {
+@-webkit-keyframes crossTwo {
   from {
     -webkit-transform: translate(67%, -170%) rotate(45deg);
             transform: translate(67%, -170%) rotate(45deg);
@@ -527,7 +526,7 @@ body button:focus {
   }
 }
 
-@keyframes animateTwo {
+@keyframes crossTwo {
   from {
     -webkit-transform: translate(67%, -170%) rotate(45deg);
             transform: translate(67%, -170%) rotate(45deg);

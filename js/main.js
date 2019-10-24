@@ -2,11 +2,11 @@
 
     $(function () {
         let continents = [];
-        let images = [];
-        let rightAnswer;        
+        let images = [];               
         let noRepeat = [];
         let topScores = [];        
         let tempArr = [];
+        let rightAnswer; 
         let score = 0;  
         let date = new Date().toLocaleDateString();
         let rank = [".no1", ".no2", ".no3"];
@@ -18,7 +18,7 @@
             score: ""
         }       
         
-        //Cache DOM
+        // Cache DOM
         const $mainScreen = $(".mainScreen");
         const $htmlBody = $('html, body');
         const $one = $mainScreen.find(".one");
@@ -39,7 +39,7 @@
         const $play = $home.find(".play");  
         let page = $questionNum.html();
 
-        //Bind Events
+        // Bind Events
         $nextBtn.on("click", nextQuestion);
         $finishBtn.on("click", finish);
         $play.on("click", play);
@@ -50,7 +50,7 @@
             $three.click(rightAns);
         }
 
-        //************** DATA ******************/
+        /************************************ DATA **************************************/
         const Data = (function() {
             async function getData() {
                 let res = await fetch('https://api.myjson.com/bins/a6da9');
@@ -66,7 +66,7 @@
         
         Data.getData();        
 
-        // Insert comma after first character in score list
+        // Insert comma after first character in score list-------------------------------
         let insertComma = (str, sub, pos) => {
             if (str.length > 3) {
                 return `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
@@ -74,14 +74,14 @@
             return str;
         }
 
-        //Set data in Local storage
+        // Set data in Local storage
         if (localStorage.getItem("topScores")) {
             topScores = JSON.parse(localStorage.getItem("topScores"));
         } else {
             topScores = [];
         }        
 
-        //Make an array of images and continents
+        // Make an array of images and continents
         function insertData() {
             allData.forEach(i => {                
                 images.push(i.image);
@@ -89,7 +89,7 @@
             })           
         }  
 
-        //Create list of scores on the main page
+        // Create list of scores on the main page-----------------------------------------
         function scoresList() {
             for (let i = 0; i < 3; i++) {
                 $(rank[i]).html(`<i class="material-icons">
@@ -112,7 +112,7 @@
             }
         }
 
-        //Display not repeating questions and correct answer image
+        // Display not repeating questions and correct answer image------------------------
         function showQuestions() {        
             const randNum = Math.floor(Math.random() * images.length);
             $mainScreen.find("img").attr("src", `${images[randNum]}`);
@@ -120,7 +120,7 @@
             continents.splice(randNum, 1);
             images.splice(randNum, 1);
             noRepeat = [...noRepeat, rightAnswer];           
-            
+            // Add two more random questions to the noRepeat array
             while (noRepeat.length < 3) {
                 let rand = continents[Math.floor(Math.random() * continents.length)];
                 if (noRepeat.indexOf(rand) == -1) {
@@ -129,16 +129,16 @@
             }
             
             shuffle(noRepeat);
-           
+           // Display shuffled questions
             for (let i in questionNum) {
                 $(`${questionNum[i]}`).html(tempArr[i]);
             }
         }
 
-        //Answers click events        
+        // Answers click events        
         clickEvents();
 
-        //Calculating correct answers scores and trigering animations
+        // Calculating correct answers scores and trigering animations----------------------
         function rightAns() {
             let $this = $(this);            
             $this.addClass('focus');    
@@ -146,28 +146,29 @@
             setTimeout(function () {
                 $nextBtn.css('display', 'block');
             }, 700)
-
-            allThree.forEach(function(a) {     
-                if($(a).find(".name").html() === rightAnswer) {
-                    $(a).find(".oneCheck").css('animation','checkedOne .5s forwards');
-                    $(a).find(".twoCheck").css('animation','checkedTwo .5s forwards');
+            // Animating correct answer on its place
+            allThree.forEach(function(a) {    
+                const $a = $(a); 
+                if($a.find(".name").html() === rightAnswer) {
+                    $a.find(".oneCheck").css('animation','checkedOne .5s forwards');
+                    $a.find(".twoCheck").css('animation','checkedTwo .5s forwards');
                 }      
             })
-                    
+            // Adding correct scores to result or animating wrong answer       
             if (answer === rightAnswer) {
                 score += 750;
             } else {
                 $this.find(".oneCross").css({
-                    "animation": "animateOne .5s forwards"
-                }).parent().css('margin-right', '10px');
+                    "animation": "crossOne .5s forwards"
+                }).parent().css('margin-right', '6px');
                 $this.find(".twoCross").css({
-                    "animation": "animateTwo .5s forwards"
+                    "animation": "crossTwo .5s forwards"
                 });
             }       
 
             $htmlBody.delay(800).animate({
                 scrollTop: $(document).height()
-            },1500);
+            }, 1200);
 
             (function unbindEvents() {
                 $one.unbind('click', rightAns);
@@ -176,18 +177,18 @@
             })();                  
         }
 
-        //****************** NEXT QUESTION *************** */        
+        //******************************** NEXT QUESTION ********************************/        
         function nextQuestion() {
             tempArr.length = 0;
             $question.removeClass('focus');
             $questionNum.html(++page);
             $(this).hide();
             showQuestions();
-            //Show result on page 6, filter results by score and date and storage them
+            // Show result on page 6, filter results by score and date and storage them
             if (page !== 6)  {
                 $htmlBody.animate({
                     scrollTop: "0px"
-                }, 250);
+                }, 650);
             } else {                           
                 $finalScore.html(score);
                 result.score = score,
@@ -207,39 +208,40 @@
             } 
             
             clickEvents();   
-            //Remove animation styles        
+            // Remove added animation styles        
             const animData = [$oneCheck, $twoCheck, $oneCross, $twoCross];            
             for(let i of animData) {
                 i.removeAttr("style");
+                i.parent().removeAttr("style");
             }                  
         }
         
-        //Start counter
+        // Start counter-----------------------------------------------------------------
         function runCounter() {
             $finalScore.counterUp({
                 delay: 10,
                 time: 1500
             });
         }
-        //Shuffle display order of questions
+        // Shuffle display order of questions
         function shuffle(array) {           
             for (let i = 0; i < 3; i++) {
                 tempArr.push(array.splice(Math.floor(Math.random() * array.length), 1));
             }          
         }
-        //Display scores
+        // Display scores
         function finish() {
             scoresList();
         }
 
-        //Reveal questions and hide home screen
+        // Reveal questions and hide home screen
         function play() {
             $home.hide();
             $mainScreen.show();
             showQuestions();
         }
 
-        //Reveal home screen
+        // Reveal home screen
         $hide.delay(700).fadeIn(1600);
     })
 
