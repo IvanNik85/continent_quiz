@@ -1,8 +1,32 @@
-@import "../css/main.scss";
+// @import "../css/main.scss";
 
 $green: #078b4f;
 $red: #e01111;
 
+body {
+    min-height: 100vh;    
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;   
+    padding: 0;
+
+    .header {
+        padding: 30px 15px 20px 50px;
+        font-family: 'Open Sans', sans-serif;
+        color: rgb(109, 109, 109);
+
+        h3 {
+            text-transform: uppercase;           
+            margin: 0;
+        }
+        h1 {           
+            margin: 0;
+            font-weight: normal;
+        }
+    }
+    button:focus {
+        outline: none;
+    }
+}
 //home screen
 .home {
     min-height: 100vh;

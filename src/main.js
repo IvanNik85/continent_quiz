@@ -1,6 +1,6 @@
-(function ($) {
+export default function main() {
 
-    $(function () {
+    // $(function () {
         let continents = [];
         let images = [];               
         let noRepeat = [];
@@ -243,6 +243,6 @@
 
         // Reveal home screen
         $hide.delay(700).fadeIn(1600);
-    })
+    // })
 
-}(jQuery));
+}
