@@ -1,0 +1,88 @@
+@-webkit-keyframes checkedOne {
+  from {
+    -webkit-transform: translate(-215%, -183%) rotate(-45deg);
+            transform: translate(-215%, -183%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-102%, -28%) rotate(-45deg);
+            transform: translate(-102%, -28%) rotate(-45deg);
+  }
+}
+
+@keyframes checkedOne {
+  from {
+    -webkit-transform: translate(-215%, -183%) rotate(-45deg);
+            transform: translate(-215%, -183%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-102%, -28%) rotate(-45deg);
+            transform: translate(-102%, -28%) rotate(-45deg);
+  }
+}
+
+@-webkit-keyframes checkedTwo {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-43%, -53%) rotate(45deg);
+            transform: translate(-43%, -53%) rotate(45deg);
+  }
+}
+
+@keyframes checkedTwo {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-43%, -53%) rotate(45deg);
+            transform: translate(-43%, -53%) rotate(45deg);
+  }
+}
+
+@-webkit-keyframes crossOne {
+  from {
+    -webkit-transform: translate(-165%, -160%) rotate(-45deg);
+            transform: translate(-165%, -160%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-52%, -39%) rotate(-45deg);
+            transform: translate(-52%, -39%) rotate(-45deg);
+  }
+}
+
+@keyframes crossOne {
+  from {
+    -webkit-transform: translate(-165%, -160%) rotate(-45deg);
+            transform: translate(-165%, -160%) rotate(-45deg);
+  }
+  to {
+    -webkit-transform: translate(-52%, -39%) rotate(-45deg);
+            transform: translate(-52%, -39%) rotate(-45deg);
+  }
+}
+
+@-webkit-keyframes crossTwo {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-47%, -49%) rotate(45deg);
+            transform: translate(-47%, -49%) rotate(45deg);
+  }
+}
+
+@keyframes crossTwo {
+  from {
+    -webkit-transform: translate(67%, -170%) rotate(45deg);
+            transform: translate(67%, -170%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-47%, -49%) rotate(45deg);
+            transform: translate(-47%, -49%) rotate(45deg);
+  }
+}
+/*# sourceMappingURL=animateCheck.css.map */

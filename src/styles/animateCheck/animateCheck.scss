@@ -1,0 +1,30 @@
+//animate check
+
+@keyframes checkedOne {
+    from {
+        transform: translate(-215%, -183%) rotate(-45deg);
+    } to {
+        transform: translate(-102%, -28%) rotate(-45deg);
+    }
+}
+@keyframes checkedTwo {
+    from {
+        transform: translate(67%, -170%) rotate(45deg);    
+    } to {        
+        transform: translate(-43%, -53%) rotate(45deg);
+    }
+}
+@keyframes crossOne {
+    from {
+        transform: translate(-165%, -160%) rotate(-45deg);        
+    } to {
+        transform: translate(-52%, -39%) rotate(-45deg);        
+    }
+}
+@keyframes crossTwo {
+    from {
+        transform: translate(67%, -170%) rotate(45deg);       
+    } to {
+        transform: translate(-47%, -49%) rotate(45deg);        
+    }
+}

@@ -1,0 +1,57 @@
+.finishPage {
+  display: none;
+}
+
+.finishPage .centered {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.finishPage .centered h1 {
+  margin: 20px 0 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #6d6d6d;
+}
+
+.finishPage .centered h5 {
+  font-size: 60px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.finishPage .centered i {
+  display: block;
+  font-size: 100px;
+  color: #0050a5;
+}
+
+.finishPage .centered span {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.finishPage a {
+  text-decoration: none;
+}
+
+.finishPage a .finishBtn {
+  width: 180px;
+  padding: 15px;
+  color: #0050a5;
+  background: #fff;
+  border: 3px solid #0050a5;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: block;
+  margin: 40px auto;
+}
+
+.finishPage a .finishBtn:hover {
+  background: #0050a5;
+  color: #fff;
+  cursor: pointer;
+}
+/*# sourceMappingURL=finishPage.css.map */

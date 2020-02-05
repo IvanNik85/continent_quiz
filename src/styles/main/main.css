@@ -1,0 +1,27 @@
+body {
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body .header {
+  padding: 30px 15px 20px 50px;
+  font-family: 'Open Sans', sans-serif;
+  color: #6d6d6d;
+}
+
+body .header h3 {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+body .header h1 {
+  margin: 0;
+  font-weight: normal;
+}
+
+body button:focus {
+  outline: none;
+}
+/*# sourceMappingURL=main.css.map */

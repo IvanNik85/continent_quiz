@@ -1,0 +1,131 @@
+//home screen
+.home {
+    min-height: 100vh;
+    position: relative; 
+    animation: back 1s 1s forwards;   
+    background: #000;
+    .hide {
+        display: none;
+    }   
+
+    .score {       
+        display: flex;
+        align-items: center;
+        padding-left: 50px;
+
+        .resDate {
+            display: flex;
+            flex-flow: column wrap;
+            
+            .pos {
+                font-size: 26px;
+                font-weight: bold;
+                padding-left: 30px;
+                color: rgb(109, 109, 109);
+            }
+        }  
+        .date {
+            font-size: 15px;
+            padding-left: 30px;
+            color: rgb(109, 109, 109);
+            i {
+                font-size: 15px; 
+                padding-left: 10px;                
+            }
+        }      
+    }
+    .scoreNumber, .play {        
+        border: 3px solid $green;
+        border-radius: 15px;
+        background: transparent;
+        color:  $green;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 8px 0;
+        &:focus {
+            outline: none;
+        }  
+    }  
+    .scoreNumber {
+        padding: 16px 18px;
+        font-size: 25px;
+    }
+    .playDiv {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 15%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-height: 530px) {
+            position: relative;  
+        }
+        a {
+            text-decoration: none;        
+        }
+        .homeBtn {
+            width: 62px;
+            height: 62px;
+            color: #fff;
+            background: #0050a5;
+            border-radius: 15px;
+            border: 2px solid #0050a5;
+            margin-right: 10px;
+        }
+        .play {     
+            display: flex;
+            align-items: center;  
+            padding: 16px 20px;
+
+            i {
+                padding-right: 10px;
+            }
+            &:focus {
+                outline: none;
+            }  
+            &:hover {
+                color: #fff;
+                background: $green;
+                cursor: pointer;
+            }  
+        }
+    }
+}
+.continentQuiz {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase; 
+    animation: animate .5s 1s forwards;   
+    color: #fff;
+    span {
+        color: $green;
+    }
+}
+@keyframes animate {
+    from {
+        top: 50%;
+        font-size: 50px;      
+        visibility: visible;
+    } to {        
+        top: 42px;
+        left: 130px;
+        letter-spacing: -2;       
+        font-size: 20px;               
+        color: #000;
+        visibility: hidden;
+    }    
+}
+@keyframes back {
+    from {
+        background: #000;
+    } to {
+        background: #fff;        
+    }
+}
