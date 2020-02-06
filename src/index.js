@@ -1,20 +1,16 @@
 import "./styles/style.scss"
+import {topScores, getData, scoresList, images, continents} from "./js/data"
 
 (function () {
 
-    $(function () {
-        let continents = [];
-        let images = [];               
-        let noRepeat = [];
-        let topScores = [];        
+    $(function () {                    
+        let noRepeat = [];              
         let tempArr = [];
         let rightAnswer; 
         let score = 0;  
-        let date = new Date().toLocaleDateString();
-        let rank = [".no1", ".no2", ".no3"];
+        let date = new Date().toLocaleDateString();        
         let allThree = [".one",".two",".three"];
-        let questionNum = [".one .name", ".two .name", ".three .name"];
-        let allData = [];        
+        let questionNum = [".one .name", ".two .name", ".three .name"];            
         let result = {
             date: "",
             score: ""
@@ -50,69 +46,9 @@ import "./styles/style.scss"
             $one.click(rightAns);
             $two.click(rightAns);
             $three.click(rightAns);
-        }
-
-        /************************************ DATA **************************************/
-        const Data = (function() {
-            async function getData() {
-                let res = await fetch('https://api.myjson.com/bins/a6da9');
-                const myJson = await res.json();
-                allData = [...myJson];
-                insertData();    
-                scoresList();                        
-            }
-            return {
-                getData
-            }
-        })()     
-        
-        Data.getData();        
-
-        // Insert comma after first character in score list-------------------------------
-        let insertComma = (str, sub, pos) => {
-            if (str.length > 3) {
-                return `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
-            }
-            return str;
-        }
-
-        // Set data in Local storage
-        if (localStorage.getItem("topScores")) {
-            topScores = JSON.parse(localStorage.getItem("topScores"));
-        } else {
-            topScores = [];
         }        
-
-        // Make an array of images and continents
-        function insertData() {
-            allData.forEach(i => {                
-                images.push(i.image);
-                continents.push(i.continent);  
-            })           
-        }  
-
-        // Create list of scores on the main page-----------------------------------------
-        function scoresList() {
-            for (let i = 0; i < 3; i++) {
-                $(rank[i]).html(`<i class="material-icons">
-                chevron_left
-                </i><i class="material-icons">
-                more_horiz
-                </i><i class="material-icons">
-                chevron_right
-                </i>`);
-                    $(rank[i]).prev().html(`<i class="material-icons">
-                more_horiz
-                </i>`);
-            }
-
-            for (let i in topScores) {
-                if (topScores.length > 0) {
-                    $(rank[i]).html(insertComma('' + topScores[i].score, ",", 1) + ' pts');
-                    $(rank[i]).prev().html(`on ${topScores[i].date}`);
-                }
-            }
-        }
+        
+        getData();  
 
         // Display not repeating questions and correct answer image------------------------
         function showQuestions() {        
@@ -191,19 +127,20 @@ import "./styles/style.scss"
                 $htmlBody.animate({
                     scrollTop: "0px"
                 }, 650);
-            } else {                           
+            } else {        
+                let final = topScores;                   
                 $finalScore.html(score);
                 result.score = score,
                 result.date = date;
-                topScores = [...topScores, result];               
-                topScores.sort((a, b) => b.score - a.score);
-                topScores.sort((a, b) => {
+                final = [...final, result];               
+                final.sort((a, b) => b.score - a.score);
+                final.sort((a, b) => {
                     if(a.score === b.score) {
                         return new Date(b.date).getTime() - new Date(a.date).getTime();
                     }                    
                 });
-                topScores.length > 3 && topScores.pop();
-                localStorage.setItem("topScores", JSON.stringify(topScores));
+                final.length > 3 && final.pop();
+                localStorage.setItem("topScores", JSON.stringify(final));
                 $finishPage.show();
                 $mainScreen.hide();
                 runCounter();
