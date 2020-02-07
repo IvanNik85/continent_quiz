@@ -49,6 +49,7 @@
     .scoreNumber {
         padding: 16px 18px;
         font-size: 25px;
+        background: #fff;
     }
     .playDiv {
         position: absolute;
@@ -78,6 +79,7 @@
             display: flex;
             align-items: center;  
             padding: 16px 20px;
+            background: #fff;
 
             i {
                 padding-right: 10px;
@@ -126,6 +128,6 @@
     from {
         background: #000;
     } to {
-        background: #fff;        
+        background: transparent;        
     }
 }

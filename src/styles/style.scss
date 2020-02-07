@@ -10,7 +10,14 @@ body {
     min-height: 100vh;    
     font-family: 'Open Sans', sans-serif;
     margin: 0;   
-    padding: 0;
+    padding: 0;    
+    
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
 
     .header {
         padding: 30px 15px 20px 50px;

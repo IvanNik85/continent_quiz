@@ -1,5 +1,6 @@
-import "./styles/style.scss"
-import {topScores, getData, scoresList, images, continents} from "./js/data"
+import "./styles/style.scss";
+import {topScores, getData, scoresList, images, continents} from "./js/data";
+import canvasData from "./js/canvas";
 
 (function () {
 
@@ -46,8 +47,9 @@ import {topScores, getData, scoresList, images, continents} from "./js/data"
             $one.click(rightAns);
             $two.click(rightAns);
             $three.click(rightAns);
-        }        
-        
+        }      
+
+        canvasData();
         getData();  
 
         // Display not repeating questions and correct answer image------------------------
