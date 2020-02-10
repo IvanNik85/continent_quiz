@@ -34,10 +34,10 @@ export default function canvasData() {
             ctx.fill();
         }
         update() {
-            if (this.x + this.radius > window.innerWidth || this.x < this.radius) {
+            if (this.x + this.radius > winW || this.x < this.radius) {
                 this.dx = -this.dx;
             }
-            if (this.y + this.radius > innerHeight || this.y < this.radius) {
+            if (this.y + this.radius > winH || this.y < this.radius) {
                 this.dy = -this.dy;
             }
             this.x += this.dx;
