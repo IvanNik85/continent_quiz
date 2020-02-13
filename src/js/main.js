@@ -118,12 +118,12 @@ export function main() {
         //******************************** NEXT QUESTION ********************************/        
         function nextQuestion() {
             tempArr.length = 0;
-            $question.removeClass('focus');
-            $questionNum.html(++page);
+            $question.removeClass('focus');            
             $(this).hide();
             showQuestions();
             // Show result on page 6, filter results by score and date and storage them
-            if (page !== 6)  {
+            if (page !== 5)  {
+                $questionNum.html(++page);
                 $htmlBody.animate({
                     scrollTop: "0px"
                 }, 650);
