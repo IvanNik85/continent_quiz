@@ -1,9 +1,36 @@
 //home screen
 .home {
+    height: 100vh;
     min-height: 100vh;
+    width: 100%;
     position: relative; 
     animation: back 1s 1s forwards;   
-    background: #000;
+    background: #000;    
+
+    .errorMesagge {
+        position: fixed;
+        transform: translate(-50%, -50%);
+        top: 40%;
+        left: 50%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 280px;   
+        width: 400px;          
+        background: rgba(34, 34, 34, .7);
+        border-radius: 10px;
+        margin: auto;
+        color: #fff;             
+        z-index: 10;  
+
+        @media (max-width: 430px) {
+            h1 {
+                font-size: 1.5em;               
+            }            
+            width: 95%;  
+        }
+    }
     .hide {
         display: none;
     }   

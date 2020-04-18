@@ -167,11 +167,42 @@
 }
 
 .home {
+  height: 100vh;
   min-height: 100vh;
+  width: 100%;
   position: relative;
   -webkit-animation: back 1s 1s forwards;
           animation: back 1s 1s forwards;
   background: #000;
+}
+
+.home .errorMesagge {
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 280px;
+  width: 400px;
+  background: rgba(34, 34, 34, 0.7);
+  border-radius: 10px;
+  margin: auto;
+  color: #fff;
+  z-index: 10;
+}
+
+@media (max-height: 430px) {
+  .home .errorMesagge {
+    font-size: 16px;
+    width: 95%;
+  }
 }
 
 .home .hide {
@@ -233,6 +264,7 @@
 .home .scoreNumber {
   padding: 16px 18px;
   font-size: 25px;
+  background: #fff;
 }
 
 .home .playDiv {
@@ -280,6 +312,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 16px 20px;
+  background: #fff;
 }
 
 .home .playDiv .play i {
@@ -352,7 +385,7 @@
     background: #000;
   }
   to {
-    background: #fff;
+    background: transparent;
   }
 }
 
@@ -361,7 +394,7 @@
     background: #000;
   }
   to {
-    background: #fff;
+    background: transparent;
   }
 }
 
@@ -515,6 +548,13 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 body .header {

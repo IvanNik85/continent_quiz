@@ -36,6 +36,7 @@ export function main() {
         const $home = $('.home');
         const $hide = $home.find(".hide");  
         const $play = $home.find(".play");  
+        const $errorMesagge = $home.find(".errorMesagge"); 
         let page = $questionNum.html();
 
         // Bind Events
@@ -54,7 +55,7 @@ export function main() {
         getData();     
 
         // Display not repeating questions and correct answer image------------------------
-        function showQuestions() {        
+        function showQuestions() {              
             const randNum = Math.floor(Math.random() * images.length);
             $mainScreen.find("img").attr("src", `${images[randNum]}`);
             rightAnswer = continents[randNum];
@@ -121,8 +122,8 @@ export function main() {
             $question.removeClass('focus');            
             $(this).hide();
             showQuestions();
-            // Show result on page 6, filter results by score and date and storage them
-            if (page !== 5)  {
+            // Show result on page 5, filter results by score and date and storage them
+            if (page < 5)  {
                 $questionNum.html(++page);
                 $htmlBody.animate({
                     scrollTop: "0px"
@@ -175,6 +176,10 @@ export function main() {
 
         // Reveal questions and hide home screen
         function play() {
+            if(!images.length) {
+                $errorMesagge.css(`display`, `flex`)
+                return;
+            }      
             $home.hide();
             $mainScreen.show();
             showQuestions();
