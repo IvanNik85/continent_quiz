@@ -1,6 +1,6 @@
 # continent_quiz
 
-https://continent-quiz.netlify.com
+https://continent-quiz.netlify.app
 
 The quiz consists of 5 questions that are randomly chosen from the list when the application is started.<br>
 Every question has an image and a correct answer. Every correct answer gives 750 point.<br>
